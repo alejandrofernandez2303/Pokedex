@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity
                         System.out.println(urlsImg.get(i));*/
                         //Document caracteristicasPkm = Jsoup.connect("https://www.pokemon.com/es/pokedex/" + nombrePkmSinNum).get();
                         pokemons.add(new Pokemon(nombres.get(i)));  //una vez conformada la lista hacemos el listado de nombres
+                        System.out.println("Isma es guapetón");
 
                     }
 
