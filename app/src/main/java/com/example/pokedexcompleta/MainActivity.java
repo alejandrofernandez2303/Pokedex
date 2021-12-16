@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity
                 //conectamos con una página
                 try
                 {
-                    Document hyjia = Jsoup.connect("https://www.pokemon.com/es/pokedex/").get();
+                    Document resultadoCompleto = Jsoup.connect("https://www.pokemon.com/es/pokedex/").get();
 
                     //aqui hacemos el scraping de la pagina web cogiendo toda la lista
                     /*Elements elementos = resultadoCompleto.selectXpath("/html/body/div[4]/section[5]/ul");
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity
                     }*/
 
                     //casteamos el Elements a ArrayList<String> con un eachText()
-                    nombres = (ArrayList<String>) hyjia.select("[href^=/es/pokedex/]").eachText();
+                    nombres = (ArrayList<String>) resultadoCompleto.select("[href^=/es/pokedex/]").eachText();
                     nombres.remove(0); //en esta página el elemento 0 no funciona. Lo eliminamos
 
                     //por cada uno de los elementos que tenemos dentro del arrayList
@@ -71,11 +71,12 @@ public class MainActivity extends AppCompatActivity
                         //String nombrePkmSinNum = nombres.get(i).substring(nombres.get(i).lastIndexOf("-") + 2);
                         //con este string consigo que el numero tenga los correspondientes "0" delante
                         String numPkm = String.format("%03d", (i + 1));
-                        //*****urlsImg.add("https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + numPkm + ".png"); //lista de urls
+                        urlsImg.add("https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + numPkm + ".png"); //lista de urls
                         /*System.out.println(nombres.get(i));
                         System.out.println(urlsImg.get(i));*/
                         //Document caracteristicasPkm = Jsoup.connect("https://www.pokemon.com/es/pokedex/" + nombrePkmSinNum).get();
                         pokemons.add(new Pokemon(nombres.get(i)));  //una vez conformada la lista hacemos el listado de nombres
+                        System.out.println("Isma es guapetón");
                         System.out.println("HHHHola");
 
                     }
